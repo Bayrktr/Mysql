@@ -1,0 +1,31 @@
+import mysql.connector
+
+name = "qwdw"
+
+
+def openMysql():
+    return mysql.connector.connect(host="127.0.0.1", user="root", password="", database="menu")
+
+
+def createTable():
+    Mycursor.execute(f"CREATE TABLE {name}(name VARCHAR(255),price VARCHAR(255))")
+    Mysql.commit()
+
+
+Mysql = openMysql()
+Mycursor = Mysql.cursor()
+
+liste = []
+Mycursor.execute("SHOW TABLES")
+for x in Mycursor:
+    liste.append(x[0])
+
+if liste == []:
+    print("Tablo 1")
+    createTable()
+else:
+    if str(name) in liste:
+        print("Tablo zaten var!")
+    else:
+        print("Tablo 2")
+        createTable()
